@@ -16,46 +16,48 @@ void main() {
   );
 }
 
-class DicePage extends StatefulWidget {
-  @override
-  _DicePageState createState() => _DicePageState();
-}
-
-class _DicePageState extends State<DicePage> {
+class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int leftDiceNumber = 1;
-    int rightDiceNumber = 1;
-
     return Center(
       child: Row(
         children: <Widget>[
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16.0),
-              child: FlatButton(
-                padding: EdgeInsets.all(0),
-                onPressed: () {
-                  print('Left button got pressed');
-                },
-                child: Image.asset('images/dice$leftDiceNumber.png'),
-              ),
+              child: Dice(),
             ),
           ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16.0),
-              child: FlatButton(
-                padding: EdgeInsets.all(0),
-                onPressed: () {
-                  print('Right button got pressed');
-                },
-                child: Image.asset('images/dice$rightDiceNumber.png'),
-              ),
+              child: Dice(),
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class Dice extends StatefulWidget {
+  @override
+  _DiceState createState() => _DiceState();
+}
+
+class _DiceState extends State<Dice> {
+  int diceNumber = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      padding: EdgeInsets.all(0),
+      onPressed: () {
+        setState(() {
+          diceNumber = 3;
+        });
+      },
+      child: Image.asset('images/dice$diceNumber.png'),
     );
   }
 }
