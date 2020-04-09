@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +56,7 @@ class _DiceState extends State<Dice> {
       padding: EdgeInsets.all(0),
       onPressed: () {
         setState(() {
-          diceNumber = 3;
+          diceNumber = Random().nextInt(6) + 1;
         });
       },
       child: Image.asset('images/dice$diceNumber.png'),
